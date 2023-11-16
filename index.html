@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+  <div id="calculator">
+    <br>
+    <div id="dobdiv">
+
+        <input type="date" id="dob" >
+    </div>
+        <br><br>
+        <button id="btn" onclick="calculate()" class ="calculateage">Calculate</button>
+    <div class="result-bar">
+      <div class="result-box" id="dat1">0 Years</div>
+      <div class="result-box" id="dat2">0 Months</div>
+      <div class="result-box" id="dat3">0 Days</div>
+  
+      <div class="result-box" id="Hours">0 Hours</div>
+      <div class="result-box" id="Min">0 Minutes</div>
+      <div class="result-box" id="Sec">0 Seconds</div>
+      <div class="result-box" id="Milli">0 MilliSeconds</div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    function calculate() {
+      var dob = new Date(document.getElementById('dob').value);
+      var today = new Date();
+
+      var ageInMilliseconds = today - dob;
+      var ageInSeconds = ageInMilliseconds / 1000;
+      var ageInMinutes = ageInSeconds / 60;
+      var ageInHours = ageInMinutes / 60;
+      var ageInDays = ageInHours / 24; 
+      
+
+      var years = Math.floor(ageInDays / 365);
+      var months = Math.floor((ageInDays % 365) / 30);
+      var days = Math.floor((ageInDays % 365) % 30);
+      
+       
+      document.getElementById('dat1').innerText = years+" Years";
+      document.getElementById('dat2').innerText = months+" Months";
+      document.getElementById('dat3').innerText = days+" Days";
+      document.getElementById('Hours').innerText = ageInHours+" Hours";
+      document.getElementById('Min').innerText = ageInMinutes+" Minutes";
+      document.getElementById('Sec').innerText = ageInSeconds+" Seconds";
+      document.getElementById('Milli').innerText = ageInMilliseconds+" MilliSeconds";
+      
+    }
+  </script>
+  
+</body>
+</html>
